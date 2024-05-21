@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	:root {
+		--cardOverlayColor: rgb(96 165 250 / 0.15);
+		--cardOverlaySpeed: 40s;
+	}
+
+	#root {
+		@apply p-8 my-0 mx-auto max-w-[1280px];
+	}
+
+	@keyframes logo-spin {
+		from {
+			@apply transition-transform rotate-0;
+		}
+		to {
+			@apply transition-transform rotate-[360deg];
+		}
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		a:nth-of-type(2) .logo {
+			animation: logo-spin infinite 20s linear;
+		}
+
+		.card-overlay {
+			animation: pan-overlay var(--cardOverlaySpeed) linear infinite;
+		}
+	}
+
+	@keyframes pan-overlay {
+		from {
+			background-position: 0% 0%;
+		}
+
+		to {
+			background-position: 0% -100%;
+		}
+	}
+
+	.logo {
+		@apply h-24 p-6;
+		will-change: filter;
+		transition: filter 300ms;
+	}
+
+	.logo:hover {
+		@apply drop-shadow-[0_0_2em_#646cffaa];
+	}
+
+	.logo.react:hover {
+		@apply drop-shadow-[0_0_2em_#61dafbaa];
+	}
+
+	.card {
+		@apply p-8;
+	}
+
+	.read-the-docs {
+		@apply text-[#888];
+	}
+
+	.pagination {
+		@apply flex justify-between p-5 border border-white;
+	}
+
+	.pagination button {
+		@apply p-2.5;
+	}
+
+	.active {
+		@apply bg-black text-white border border-white;
+	}
+
+	.card-overlay {
+		@apply relative z-[2];
+		background: linear-gradient(
+			var(--cardOverlayColor) 0,
+			var(--cardOverlayColor) 3px,
+			transparent 3px,
+			transparent 9px
+		);
+		background-size: 100% 30px;
+	}
+}
